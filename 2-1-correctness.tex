@@ -1,0 +1,130 @@
+% 2-1-correctness.tex
+
+\documentclass[a4paper, justified]{tufte-handout}
+\input{hw-preamble} % feel free to modify this file
+\title{第1讲: 算法问题与解题的正确性}
+\me{林方浩}{231098078}{}{}
+\date{截止时间：2024年3月3日} % or like 2019年9月13日
+\newcommand{\lg}{\log_{10}}
+\usepackage{bm}
+\begin{document}
+\maketitle
+\noplagiarism % always keep this line
+
+\beginrequired
+
+%%%%%%%%%%%%%%%
+\begin{problem}[TC Problem $2-1$]
+\end{problem}
+
+\begin{solution}
+% 填写你的答案
+\begin{enumerate}
+    \item [$\bm{a.}$] Every k-length sublist have the running time $\Theta(k^{2})$, in terms of $\Theta$-notation. As a result, $\frac{n}{k}$ sublists have total running time of $\Theta(nk)$.
+    \item [$\bm{b.}$]  The recursion tree has $\lg (\frac{n}{k})$ levels, while the cost of each level equals to the total length of the array, which is n. So we can merge the sublists in $\Theta(n\lg(\frac{n}{k}))$ worst-case time.
+    \item [$\bm{c.}$]  $k = \Theta(\lg(n))$.
+    \item [$\bm{d.}$]  We can choose k as an integer which is the most closet to $\lg(n)$.
+\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[TC Problem $2-2$]
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+    \item [$\bm{a.}$] 
+    \item [$\bm{b.}$] 
+    \item [$\bm{c.}$] 
+    \item [$\bm{d.}$] 
+\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[TC Problem $2-3$]
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+    \item [$\bm{a.}$] $\Theta(n)$.
+    \item [$\bm{b.}$] $y = 0$\par
+    $\bm{for}$ $i = 0$ $\bm{to}$ $n$ \par
+    \hspace{2em} $y = y $+  $a_ix^{i}$\par
+    The running time of this algorithm is $\Theta(n^{2})$ ,the efficiency of the algorithm is less than Horner's rule. 
+    \item [$\bm{c.}$] $y = x\left(\sum_{k=0}^{n-(i+1)}{a_{k+i+1}x^{k}}\right)+a_i = \left(\sum_{k=1}^{n-i}{a_{k+i}x^{k}}\right)+a_{i} = \sum_{k=0}^{n-i}{a_{k+i}x^{k}}$.
+    When it is at termination, which means $i=0$, we have $y=\sum_{k=0}^{n}{a_k}x^{k}$.
+    \item [$\bm{d.}$] 
+\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[TC Problem $2-4$]
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+    \item [$\bm{a.}$] $pair(1,5)\quad pair(2,5)\quad pair(3,5)\quad pair(4,5)\quad pair(3,4)$
+    \item [$\bm{b.}$]  $<n,n-1,n-2,...,1>$ has the most inversions. It has $\frac{n(n-1)}{2}$ inversions.
+    \item [$\bm{c.}$] Linear. Every time we compare the key with the elements on the left of the key, the inversion's number decresed by 1. As a result, the number of inversions correspond to the times of comparision.
+    \item [$\bm{d.}$] 
+\end{enumerate}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{problem}[TC Problem $3-2$]
+\end{problem}
+
+\begin{solution}
+  \begin{tabular}[t]{cc|c|c|c|c|c|}
+    $\bm{A}$ & $\bm{B}$ & $\bm{O}$ & $\bm{o}$ & $\bm{\Omega}$ & $\bm{\omega}$ & $\bm{\Theta}$\\
+    \hline
+    $\lg^{k}n$ & $n^{\epsilon}$ &yes &yes &no &no &no\\
+    \hline
+    $n^{k}$ & $c^{n} $ &yes &yes& no& no&no\\
+    \hline
+    $\sqrt{n}$ & $n^{sin(n)}$ &no &no &no &no &no\\
+    \hline 
+    $2^{n} $& $2^{\frac{n}{2}}$ & no &no &yes &yes &no \\
+    \hline
+    $n^{\lg c}$ & $c^{\lg n}$ &yes &no &yes &no &yes\\
+    \hline
+    $\lg{(n!)}$ & $\lg(n^{n})$ & yes &no &yes &no &yes\\
+    \hline
+
+\end{tabular}
+\end{solution}
+%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%
+\begin{problem}[TC Problem $3-4$]
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+    \item [$\bm{a.}$]False, we can choose  $f(n) = n$, $g(n) = n^{2}$.
+    \item [$\bm{b.}$]False, we can choose $f(n) = n$, $g(n) = n^{2}$.
+    \item [$\bm{c.}$]If $f(n) = O(g(n))$, there exist a positive constants $c$ and $n_0$ such that $1 \le f(n) \le cg(n)$ for all $n \ge n_0$, thus $\lg(f(n)) \le$ $\lg(cg(n))$= $\lg(c)$ + $\lg(g(n))$=O($\lg(g(n))$).
+    \item [$\bm{d.}$]Just as the problem above, $0 \le f(n) \le cg(n)$, thus $2^{f(n)} \le 2^{cg(n)} = 2^{c} \cdot 2^{g(n)} = O(2^{g(n)})$.
+    \item [$\bm{e.}$] As we suppose that when n increase to infinity, $f(n)$ must be unbounded, which implies $f(n) \ge 1$, thus $f(n) \le f(n)^{2}$.
+    \item [$\bm{f.}$] There exist a positive constants $c$ and $n_0$ such that $0 \le f(n) \le cg(n)$ for all $n \ge n_0$, so we can choose $\frac{1}{c}$ and the $n_0$ such that $\frac{1}{c}f(n) \le g(n)$ for all $n \ge n_0$.
+    \item [$\bm{g.}$] False, we can choose $f(n) = 2^{n}$.
+    \item[$\bm{h.}$]We let $g(n) = o(f(n))$, thus for any positive constant $c > 0$, there exists a constant $n_0 > 0$ such that $0 \le g(n) < cf(n) $ for all $n \ge n_0$, which implies $f(n) \le f(n) + g(n) \le (1+c)f(n) $ , thus $f(n) + o(f(n)$ = $\Theta(f(n))$.
+\end{enumerate} 
+\end{solution}
+%%%%%%%%%%%%%%%
+
+
+% 如果需要反馈你可以使用：
+%\beginfb 
+% \begin{itemize}
+%   \item 对课程及教师的建议与意见
+%   \item 教材中不理解的内容
+%   \item 希望深入了解的内容
+%   \item $\cdots$
+% \end{itemize}
+\end{document}
