@@ -1,11 +1,11 @@
-% 2-1-correctness.tex
+%2-1-correctness.tex
 
 \documentclass[a4paper, justified]{tufte-handout}
 \input{hw-preamble} % feel free to modify this file
 \title{第1讲: 算法问题与解题的正确性}
 \me{林方浩}{231098078}{}{}
 \date{截止时间：2024年3月3日} % or like 2019年9月13日
-\newcommand{\lg}{\log_{10}}
+%\newcommand{\lg}{\log_{10}}
 \usepackage{bm}
 \begin{document}
 \maketitle
@@ -34,10 +34,10 @@
 
 \begin{solution}
 \begin{enumerate}
-    \item [$\bm{a.}$] 
-    \item [$\bm{b.}$] 
-    \item [$\bm{c.}$] 
-    \item [$\bm{d.}$] 
+    \item [$\bm{a.}$] We alse need to prove that : the set of elements in $A'$ is the same as the set of elements in $A$.
+    \item [$\bm{b.}$] The loop invariant is :$A[j]$ is the smallest element in the array$A[j..n]$.\\ $\bm{Initialization:}$ $j=A.length$, then $A[j..n]$ is just $A[n]$, it is obviously right. \\$\bm{Maintenance:}$ If $A[j] < A[j-1]$,then after exchange them, the number indexed by $j-1$ is the smallest element in $A[j-1..n]$ since all elements in $A[j+1..n]$ is greater than $A[j]$. If $A[j] \ge A[j-1]$ , then the conclusion does not change. \\$\bm{Termination:}$ We have $j=i$, according to the maintenance part, $A[i]$ is the smallest element in the array $A[i..n]$.
+    \item [$\bm{c.}$] The loop invariant is : The array $A[1..i]$ is sorted.\\ $\bm{Initialization:}$ We have $i=1$, according to the termination in part $\bm{b}$ ,it is correct.\\ $\bm{Maintenance:}$ Since we have already proved that $A[i+1]$ is the smallest element in the array $A[i+1..n]$, and we suppose that the array $A[1..i]$ is sorted, thus $A[1..i+1]$ is sorted.\\ $\bm{Termination:}$ This time, i changes to $A.length$,which implies that the whole array is sorted.
+    \item [$\bm{d.}$] The worst-case running time of bubblesort is $\Theta(n^{2})$, which is the same as the insertion sort.
 \end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%
@@ -55,7 +55,7 @@
     The running time of this algorithm is $\Theta(n^{2})$ ,the efficiency of the algorithm is less than Horner's rule. 
     \item [$\bm{c.}$] $y = x\left(\sum_{k=0}^{n-(i+1)}{a_{k+i+1}x^{k}}\right)+a_i = \left(\sum_{k=1}^{n-i}{a_{k+i}x^{k}}\right)+a_{i} = \sum_{k=0}^{n-i}{a_{k+i}x^{k}}$.
     When it is at termination, which means $i=0$, we have $y=\sum_{k=0}^{n}{a_k}x^{k}$.
-    \item [$\bm{d.}$] 
+    \item [$\bm{d.}$] According to part $\bm{c}$, it is correct when it terminates.
 \end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%
@@ -69,7 +69,7 @@
     \item [$\bm{a.}$] $pair(1,5)\quad pair(2,5)\quad pair(3,5)\quad pair(4,5)\quad pair(3,4)$
     \item [$\bm{b.}$]  $<n,n-1,n-2,...,1>$ has the most inversions. It has $\frac{n(n-1)}{2}$ inversions.
     \item [$\bm{c.}$] Linear. Every time we compare the key with the elements on the left of the key, the inversion's number decresed by 1. As a result, the number of inversions correspond to the times of comparision.
-    \item [$\bm{d.}$] 
+    \item [$\bm{d.}$] By using the algorithm similar to the merge sort, we can count the inversion numbers in every sublists, and keep track on the inversions when merging the two sublists, we sum the two parts ,that is the answer.
 \end{enumerate}
 \end{solution}
 %%%%%%%%%%%%%%%
